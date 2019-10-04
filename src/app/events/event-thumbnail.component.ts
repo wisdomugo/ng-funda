@@ -6,15 +6,12 @@ import { getRenderedText } from '@angular/core/src/render3';
     <div class="well hoverwell thumbnail">
     <h2>{{event?.name}}</h2>
     <div>Date: {{event?.date}}</div>
+    <!-- using style binding is shown in this line 
+    [style.color]="event?.time === '8:00 am' ? '#003300' : '#bbb'"  -->
+    <!-- convoluted statement using ngStyle, we did put it into function
+    [ngStyle]="{'color': event?.time === '8:00 am' ? '#003300' : '#bbb', 'font-weight': event?.time === '8:00 am' ? 'bold' : 'normal'}" -->
 
-    <!-- This is a comment showing how to use class binding to style component 
-        [class.green]="event?.time === '8:00 am'"-->
-
-    <!-- This shows how to apply css using ngClass but inline, it makes the code cumbersome to read so we
-    rather applied it by calling a function
-    [ngClass]="{green: event?.time === '8:00 am', bold: event?.time === '8:00 am'}" -->
-
-    <div [ngClass]="getStartTimeClass()"  [ngSwitch]="event?.time">
+    <div [ngStyle]="getStartTimeStyle()" [ngSwitch]="event?.time">
         Time: {{event?.time}}
         <span *ngSwitchCase="'8:00 am'">(Early Start)</span>
         <span *ngSwitchCase="'10:00 am'">(Late Start)</span>
@@ -36,8 +33,6 @@ import { getRenderedText } from '@angular/core/src/render3';
     .pad-left {margin-left:10px;}
     .well div {color: #bbb; }
     .thumbnail{min-height: 210px;}
-    .green { color: #003300 !important;}
-    .bold {font-weight: bold;}
     `]
 
 })
@@ -50,10 +45,10 @@ export class EventThumbnailComponent {
         console.log('foo')
     }
 
-    getStartTimeClass(){
+    getStartTimeStyle():any {
         if(this.event && this.event.time === '8:00 am'){
-            return 'green bold'
-            return ''
+            return {color: '#003300', 'font-weight': 'bold'}
+            return {}
         }
     }
 }
