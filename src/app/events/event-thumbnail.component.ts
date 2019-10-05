@@ -3,14 +3,10 @@ import { getRenderedText } from '@angular/core/src/render3';
 @Component({
     selector: 'event-thumbnail',
     template: `
-    <div class="well hoverwell thumbnail">
+    <div [routerLink]="['/events', event.id]" class="well hoverwell thumbnail">
     <h2>{{event?.name}}</h2>
     <div>Date: {{event?.date}}</div>
-    <!-- using style binding is shown in this line 
-    [style.color]="event?.time === '8:00 am' ? '#003300' : '#bbb'"  -->
-    <!-- convoluted statement using ngStyle, we did put it into function
-    [ngStyle]="{'color': event?.time === '8:00 am' ? '#003300' : '#bbb', 'font-weight': event?.time === '8:00 am' ? 'bold' : 'normal'}" -->
-
+    
     <div [ngStyle]="getStartTimeStyle()" [ngSwitch]="event?.time">
         Time: {{event?.time}}
         <span *ngSwitchCase="'8:00 am'">(Early Start)</span>
