@@ -1,5 +1,7 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
 import { getRenderedText } from '@angular/core/src/render3';
+import {IEvent} from './shared/index'
+
 @Component({
     selector: 'event-thumbnail',
     template: `
@@ -34,7 +36,7 @@ import { getRenderedText } from '@angular/core/src/render3';
 })
 
 export class EventThumbnailComponent {
-    @Input() event:any
+    @Input() event:IEvent
     someProperty:any = "some value"
 
     logFoo(){
