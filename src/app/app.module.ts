@@ -53,6 +53,15 @@ declare let toastr:Toastr
   providers: [
     EventService, 
     {provide: TOASTR_TOKEN, useValue: toastr}, 
+
+      /*example of the useExisting provider. 
+      useful when you want only few of the methods in the class and not all
+      {provide: TOASTR_TOKEN, useExisting: toastr}*/
+
+          /*example of the useFactory provider. 
+          used in a very complex cases
+      {provide: TOASTR_TOKEN, useFactory: factory()}*/
+
     EventRouteActivator,
     EventListResolver,
     AuthService,
