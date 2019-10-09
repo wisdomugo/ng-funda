@@ -16,7 +16,7 @@ declare let toastr
             <div *ngFor="let event of events" class="col-md-5">
                 <event-thumbnail (click)="handleThumbnailClick(event.name)" [event]="event" #thumbnail [event]="event1"></event-thumbnail>
             </div>
-        </div>
+        </div>  
         <button class="btn btn-primary" (click)="thumbnail.logFoo()">Log me some foo </button>
     </div>
     `
