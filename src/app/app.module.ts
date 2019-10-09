@@ -56,6 +56,7 @@ declare let toastr:Toastr
     EventRouteActivator,
     EventListResolver,
     AuthService,
+    //example of the useClass provider {provide: AuthService, useClass: AuthService}
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
