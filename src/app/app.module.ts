@@ -60,8 +60,8 @@ let jQuery = window['$']
  
   providers: [
     EventService, 
-    {provide: TOASTR_TOKEN, useValue: toastr},
-    {provide: JQ_TOKEN, useValue: jQuery},  
+    {provide: TOASTR_TOKEN, useValue: toastr}, 
+    {provide: JQ_TOKEN, useValue: jQuery}, 
     EventRouteActivator,
     EventListResolver,
     AuthService,
