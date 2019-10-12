@@ -14,6 +14,6 @@ export class EventsAppComponent {
   }
 
   ngOnInit(){
-    this.auth.checkAuthenticationStatus().subscribe();
+    this.auth.checkAuthenticationStatus();
   }
 }
