@@ -1,28 +1,28 @@
-import { Injectable } from '@angular/core'
-import {Observable, of, Subject } from 'rxjs'
+import { Injectable } from '@angular/core';
+import {Observable, of, Subject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { ISession } from '../index'
+import { ISession } from '../index';
 
 
 @Injectable()
 export class VoterService {
 
-    constructor(private http: HttpClient){
+    constructor(private http: HttpClient) {
 
     }
 
-    deleteVoter(eventId: number, session: ISession, voterName: string){
+    deleteVoter(eventId: number, session: ISession, voterName: string) {
         session.voters = session.voters.filter(voter => voter !== voterName);
 
         const url = `/api/events/${eventId}/sessions/${session.id}/voters/${voterName}`;
         this.http.delete(url)
         .pipe(catchError(this.handleError('addVoter')))
-        .subscribe()
+        .subscribe();
     }
 
-    addVoter(eventId: number, session: ISession, voterName: string){
+    addVoter(eventId: number, session: ISession, voterName: string) {
         session.voters.push(voterName);
 
         const options = {headers: new HttpHeaders({'Content-Type': '/application/json'})};
@@ -33,13 +33,13 @@ export class VoterService {
 
     }
 
-    userHasVoted(session: ISession, voterName: string){
-        return session.voters.some(voter => voter === voterName)
+    userHasVoted(session: ISession, voterName: string) {
+        return session.voters.some(voter => voter === voterName);
     }
 
-    private handleError<T> (operation = 'operation', result?: T){
+    private handleError<T> (operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {
           console.error(error);  return of(result as T);
-        }
+        };
       }
 }

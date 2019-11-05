@@ -1,6 +1,6 @@
-import { InjectionToken } from '@angular/core'
+import { InjectionToken } from '@angular/core';
 
-export let TOASTR_TOKEN = new InjectionToken<any>('toastr')
+export let TOASTR_TOKEN = new InjectionToken<any>('toastr');
 
 
 export interface Toastr {
